@@ -1,0 +1,8 @@
+build/
+.env
+node_modules/
+prettierrc
+nodemon.json
+package-lock.json
+yarn.lock
+config.ts
