@@ -1,9 +1,9 @@
 build/
 .env
 node_modules/
+coverage/
 prettierrc
 nodemon.json
 package-lock.json
 yarn.lock
 config.ts
-coverage/
