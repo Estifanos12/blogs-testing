@@ -1,7 +1,5 @@
 # Blog Post REST API Testing with Jest & Supertest
 
----
-
 ## Routes
 
 -   `/post`
