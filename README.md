@@ -1,4 +1,4 @@
-# Blog Post API Testing with Jest & Supertest
+# Blog Post REST API Testing with Jest & Supertest
 
 ---
 
@@ -15,5 +15,5 @@
     -   `GET` - returns all users
     -   `POST` - create a user with `username`, `name`, `email`
 -   `/user/:id`
-    -   `GET` - returns user with id `id`
-    -   `DELETE` - delete a user with id `id`
+    -   `GET` - returns user with `id`
+    -   `DELETE` - delete a user with `id`
