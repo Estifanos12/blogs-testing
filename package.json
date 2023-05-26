@@ -6,7 +6,7 @@
         "start": "ts-node --esm src/index.ts",
         "dev": "nodemon --config nodemon.json src/app.ts",
         "pretest": "echo 'dropDatabase()' | mongo Social_App",
-        "test": "jest --detectOpenHandles --watchAll --coverage"
+        "test": "jest --detectOpenHandles --watchAll --verbose --coverage "
     },
     "license": "MIT",
     "devDependencies": {
