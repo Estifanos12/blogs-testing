@@ -26,19 +26,16 @@ export default {
         name: "some name",
         email: "someemail1234@gmail.com"
     },
-
     requiredMissingUserMockData: {
         username: "username123",
         name: "some namenew"
     },
-
     correctPostMockData: {
         title: "aabcdegffa",
         description: "anjfhadhjadjhf",
         vote: 5,
         author: "646ca147a83e24d475fbf660"
     },
-
     invalidPostMockData: {
         title: "aabcdegffa",
         description: "anjfhadhjadjhf",
