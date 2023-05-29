@@ -36,7 +36,7 @@ export default {
         vote: 5,
         author: "646ca147a83e24d475fbf660"
     },
-    invalidPostMockData: {
+    invalidIdPostMockData: {
         title: "aabcdegffa",
         description: "anjfhadhjadjhf",
         vote: 5,
