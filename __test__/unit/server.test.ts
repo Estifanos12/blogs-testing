@@ -1,5 +1,5 @@
 import "jest";
-import request, { Response } from "supertest";
+import request from "supertest";
 
 import app from "../../src/app";
 
@@ -21,7 +21,7 @@ describe("Server", () => {
     });
 
     describe("Get / Request success handler", () => {
-        it("should respond with 200 status code", () => {
+        it("should respond with a 200 status code", () => {
             request(server).get("/post").expect(200);
         });
     });

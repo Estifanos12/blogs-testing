@@ -17,7 +17,7 @@ describe("Post request validation", () => {
 });
 
 describe("User request validation", () => {
-    describe("Username is less than 6 characters", () => {
+    describe("username is less than 6 characters", () => {
         it("should return error message", async () => {
             expect(await validateUserRequest(mock_data.mockUserData)).toEqual({ message: '"username" length must be at least 6 characters long' });
         });
