@@ -47,7 +47,7 @@ describe("Testing models", () => {
         }, 60000);
 
         it("should throw an error due to invalid user id", async () => {
-            const newPost = new User(mock_data.invalidPostMockData);
+            const newPost = new User(mock_data.invalidIdPostMockData);
             let err;
             try {
                 await newPost.save();
