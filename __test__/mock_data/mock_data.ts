@@ -28,17 +28,17 @@ export default {
     },
     requiredMissingUserMockData: {
         username: "username123",
-        name: "some namenew"
+        name: "some new name"
     },
     correctPostMockData: {
-        title: "aabcdegffa",
-        description: "anjfhadhjadjhf",
+        title: "some title",
+        description: "some description",
         vote: 5,
         author: "646ca147a83e24d475fbf660"
     },
     invalidIdPostMockData: {
-        title: "aabcdegffa",
-        description: "anjfhadhjadjhf",
+        title: "some title",
+        description: "some description",
         vote: 5,
         author: "incorrectID"
     }
