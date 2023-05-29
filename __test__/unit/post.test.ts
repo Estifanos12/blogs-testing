@@ -3,14 +3,14 @@ import { validatePostRequest } from "../../src/validation/post.validation";
 describe("Posts", () => {
     const mockData = {
         title: "Eyuel Ketema",
-        description: "Eyuel ketema masturbate",
+        description: "some description about eyu ketema",
         vote: 6,
         author: ""
     };
 
     const mockData2 = {
         title: "Eyuel Ketema",
-        description: "Eyuel ketema masturbate",
+        description: "some description about eyu ketema",
         vote: "6",
         author: "Estifanos Gashawtena"
     };
