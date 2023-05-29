@@ -5,7 +5,6 @@ export default {
         vote: 6,
         author: ""
     },
-
     mockPostData2: {
         title: "Eyuel Ketema",
         description: "some description about eyu ketema",
@@ -17,7 +16,6 @@ export default {
         name: "Eyuel ketema",
         email: "e@gmail.com"
     },
-
     mockUserData2: {
         username: "alemusisay",
         name: "Eyuel ketema",
