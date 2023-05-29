@@ -8,7 +8,7 @@ describe("Post request validation", () => {
             expect(await validatePostRequest(mock_data.mockPostData)).toEqual({ message: '"author" is not allowed to be empty' });
         });
 
-        describe("vote field is empty", () => {
+        describe("vote field is not a number", () => {
             it("should return error message", async () => {
                 expect(await validatePostRequest(mock_data.mockPostData2)).toEqual({ message: '"vote" must be a number' });
             });
