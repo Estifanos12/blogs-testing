@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi, { ValidationError } from "joi";
 
 export const PostValidation = Joi.object({
     title: Joi.string().min(6).required(),
@@ -14,12 +14,12 @@ export const UpdatePostValidation = Joi.object({
     description: Joi.string().min(6).required()
 });
 
-export const validatePostRequest = async (post: any): Promise<{ message: string }> => {
+export const validatePostRequest = (post: any): { message: string } | typeof ValidationError => {
     const { error } = PostValidation.validate(post, {
         convert: false
     });
 
-    if (error) return { message: error.details[0].message };
+    if (error) return error;
 
     return { message: "Success" };
 };

@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi, { ValidationError } from "joi";
 
 export const UserValidation = Joi.object({
     username: Joi.string().min(6).max(255).required(),
@@ -9,12 +9,12 @@ export const UserValidation = Joi.object({
 
 export const UserIdValidation = Joi.string().alphanum().required();
 
-export const validateUserRequest = async (user: any): Promise<{ message: string }> => {
+export const validateUserRequest = (user: any): { message: string } | typeof ValidationError => {
     const { error } = UserValidation.validate(user, {
         convert: false
     });
 
-    if (error) return { message: error.details[0].message };
+    if (error) return error;
 
     return { message: "Success" };
 };
