@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction, RequestHandler } from "express";
 
 import { User } from "../models/user.model";
-import { IUser } from "../interfaces/user.interface";
 import { UserValidation, UserIdValidation } from "../validation/user.validation";
 import * as bcrypt from "bcrypt";
 
@@ -138,6 +137,6 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
 };
 
 export const getMe: RequestHandler = async (req: Request, res) => {
-    const user = await User.findById(req.user?.sub)
-    res.json(user)
-}
+    const user = await User.findById(req.user?.sub);
+    res.json(user);
+};
