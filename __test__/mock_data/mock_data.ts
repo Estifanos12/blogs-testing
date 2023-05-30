@@ -45,5 +45,19 @@ export default {
         description: "some description",
         vote: 5,
         author: "incorrectID"
+    },
+    credentials: {
+        email: "john@gmail.com",
+        password: "john123"
+    },
+    userWithCredentials: {
+        name: "John Doe",
+        username: "john766",
+        email: "john@gmail.com",
+        password: "john123"
+    },
+    invalidEmailFormat: {
+        email: "johngmail.com",
+        password: "pass1234"
     }
 };
