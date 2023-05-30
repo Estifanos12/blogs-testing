@@ -1,5 +1,5 @@
 import express from "express";
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction } from "express";
 
 import postRoute from "./routes/post.route";
 import userRoute from "./routes/user.route";
