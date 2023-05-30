@@ -20,10 +20,23 @@ const UserSchema: Schema = new Schema(
             type: String,
             required: true,
             unique: true
+        },
+        password: {
+            type: String,
+            required: true
         }
     },
 
     { timestamps: true }
 );
+
+UserSchema.set('toJSON', {
+    transform: (_, obj) => {
+        obj.id = obj._id
+        delete obj._id
+        delete obj.__v
+        delete obj.password
+    }
+})
 
 export const User = mongoose.model<IUser>("User", UserSchema);

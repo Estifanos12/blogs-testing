@@ -6,6 +6,7 @@ import { MONGO_URL } from "../../src/config";
 
 beforeAll(async () => {
     await mongoose.connect(MONGO_URL);
+    await User.collection.drop()
 });
 
 afterAll(async () => {
@@ -15,26 +16,30 @@ afterAll(async () => {
 const correctUserMockData = {
     username: "someusername1234",
     name: "some name",
-    email: "someemail1234@gmail.com"
+    email: "someemail1234@gmail.com",
+    password: "pass1234"
 };
 
 const requiredMissingUserMockData = {
     username: "username123",
-    name: "some namenew"
+    name: "some namenew",
+    password: "pass1234"
 };
 
 const correctPostMockData = {
     title: "aabcdegffa",
     description: "anjfhadhjadjhf",
     vote: 5,
-    author: "646ca147a83e24d475fbf660"
+    author: "646ca147a83e24d475fbf660",
+    password: "pass1234"
 };
 
 const inCorrectPostMockData = {
     title: "aabcdegffa",
     description: "anjfhadhjadjhf",
     vote: 5,
-    author: "incorrectID"
+    author: "incorrectID",
+    password: "pass1234"
 };
 describe("Testing models", () => {
     describe("Testing User Model", () => {

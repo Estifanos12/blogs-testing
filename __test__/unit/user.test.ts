@@ -4,13 +4,15 @@ describe("User", () => {
     const mockData = {
         username: "alemu",
         name: "Eyuel ketema",
-        email: "e@gmail.com"
+        email: "e@gmail.com",
+        password: "pass1234"
     };
 
     const mockData2 = {
         username: "alemusisay",
         name: "Eyuel ketema",
-        email: "e@gmail.com"
+        email: "e@gmail.com",
+        password: "pass1234"
     };
 
     it("username is less than 6 characters", async () => {
