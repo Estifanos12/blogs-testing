@@ -5,7 +5,8 @@
     "scripts": {
         "start": "ts-node --esm src/index.ts",
         "dev": "nodemon --config nodemon.json src/index.ts",
-        "test": "jest --detectOpenHandles --watchAll --verbose --coverage --runInBand"
+        "test": "jest --detectOpenHandles --watchAll --verbose --coverage --runInBand",
+        "posttest": "start coverage/lcov-report/index.html"
     },
     "license": "MIT",
     "devDependencies": {
@@ -17,6 +18,7 @@
         "@types/supertest": "^2.0.12",
         "babel-jest": "^29.5.0",
         "nodemon": "^2.0.22",
+        "open": "^9.1.0",
         "ts-node": "^10.9.1",
         "typescript": "^5.0.4"
     },
