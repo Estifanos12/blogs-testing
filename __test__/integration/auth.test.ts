@@ -1,80 +1,69 @@
-import request from 'supertest'
-import app from '../../src/app'
+import request from "supertest";
 
-describe('Integration: POST /auth/login', () => {
-  const credentials = {
-    email: "john@gmail.com",
-    password: "john123"
-  }
+import app from "../../src/app";
+import mock_data from "../mock_data/mock_data";
 
-  const user = {
-    name: "John Doe",
-    username: "john766",
-    ...credentials
-  }
+describe("Integration: POST /auth/login", () => {
+    beforeAll(async () => {
+        await request(app).post("/user").send(mock_data.userWithCredentials);
+    });
 
-  beforeAll(async () => {
-    await request(app).post('/user').send(user)
-  })
+    describe("the credentials are correct", () => {
+        it("should return token", async () => {
+            return request(app).post("/auth/login").send(mock_data.credentials).expect(200).expect(/token/).expect("Content-Type", /json/);
+        });
+    });
 
-  it('return token if the credentials are correct', async () => {
-    return request(app)
-      .post('/auth/login')
-      .send(credentials)
-      .expect(200)
-      .expect(/token/)
-      .expect('Content-Type', /json/)
-  })
+    describe("either password or email is incorrect", () => {
+        it("should return a 401 unauthorized status code", async () => {
+            await request(app)
+                .post("/auth/login")
+                .send({
+                    email: mock_data.credentials.email,
+                    password: "incorrect_pwd"
+                })
+                .expect(401)
+                .expect(/invalid credentials/);
 
-  it('return unauthorized if either password or email is incorrect', async () => {
-    await request(app)
-      .post('/auth/login')
-      .send({
-        email: credentials.email,
-        password: 'incorrect_pwd'
-      })
-      .expect(401)
-      .expect(/invalid credentials/)
+            await request(app)
+                .post("/auth/login")
+                .send({
+                    password: mock_data.credentials.password,
+                    email: "incorrect_email@gmail.com"
+                })
+                .expect(401)
+                .expect(/invalid credentials/);
+        });
+    });
 
-    await request(app)
-      .post('/auth/login')
-      .send({
-        password: credentials.password,
-        email: 'incorrect_email@gmail.com'
-      })
-      .expect(401)
-      .expect(/invalid credentials/)
-  })
+    describe("email credential not present", () => {
+        it("should return a 400 bad request status code", async () => {
+            return request(app).post("/auth/login").send({ password: mock_data.credentials.password }).expect(400).expect(/error/).expect(/email/);
+        });
+    });
 
-  it('checks if email is present', async () => {
-    return request(app)
-      .post('/auth/login')
-      .send({ password: credentials.password })
-      .expect(400)
-      .expect(/error/)
-      .expect(/email/)
-  })
+    describe("password credential not present", () => {
+        it("should return a 400 bad request status code", async () => {
+            return request(app)
+                .post("/auth/login")
+                .send({ email: mock_data.credentials.email })
+                .expect(400)
+                .expect(/error/)
+                .expect(/password/);
+        });
+    });
 
-  it('checks if email is valid', async () => {
-    return request(app)
-      .post('/auth/login')
-      .send({
-        password: credentials.password,
-        email: "johngmail.com"
-      })
-      .expect(400)
-      .expect(/error/)
-      .expect(/email/)
-  })
-
-  it('checks if password is present', async () => {
-    return request(app)
-      .post('/auth/login')
-      .send({
-        email: credentials.email
-      })
-      .expect(400)
-      .expect(/error/)
-      .expect(/password/)
-  })
-})
+    describe("email credential not valid format", () => {
+        it("should return a 400 bad request status code", async () => {
+            return request(app)
+                .post("/auth/login")
+                .send({
+                    password: mock_data.credentials.password,
+                    email: "johngmail.com"
+                })
+                .expect(400)
+                .expect(/error/)
+                .expect(/email/);
+        });
+    });
+});
