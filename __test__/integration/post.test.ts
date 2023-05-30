@@ -19,7 +19,7 @@ describe("Integration: Post /POST Testing", () => {
                 author: "646ca147a83e24d475fbf660"
             });
             expect(result.status).toBe(200);
-            expect(result.body._id).toBeDefined();
+            expect(result.body.id).toBeDefined();
         }, 60000);
     });
 

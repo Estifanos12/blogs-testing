@@ -14,21 +14,25 @@ export default {
     mockUserData: {
         username: "alemu",
         name: "Eyuel ketema",
-        email: "e@gmail.com"
+        email: "e@gmail.com",
+        password: "pass1234"
     },
     mockUserData2: {
         username: "alemusisay",
         name: "Eyuel ketema",
-        email: "e@gmail.com"
+        email: "e@gmail.com",
+        password: "pass1234"
     },
     correctUserMockData: {
         username: "someusername1234",
         name: "some name",
-        email: "someemail1234@gmail.com"
+        email: "someemail1234@gmail.com",
+        password: "pass1234"
     },
     requiredMissingUserMockData: {
         username: "username123",
-        name: "some new name"
+        name: "some new name",
+        password: "pass1234"
     },
     correctPostMockData: {
         title: "some title",

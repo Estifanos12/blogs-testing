@@ -7,6 +7,7 @@ import mock_data from "../mock_data/mock_data";
 
 beforeAll(async () => {
     await mongoose.connect(MONGO_URL);
+    await User.collection.drop()
 });
 
 afterAll(async () => {

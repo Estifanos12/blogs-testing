@@ -25,4 +25,13 @@ const PostSchema: Schema = new Schema(
     { timestamps: true }
 );
 
+PostSchema.set('toJSON', {
+    transform: (_, obj) => {
+        obj.id = obj._id
+        delete obj._id
+        delete obj.__v
+    }
+})
+
+
 export const Post = mongoose.model<IPost>("Post", PostSchema);

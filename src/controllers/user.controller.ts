@@ -1,8 +1,9 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, RequestHandler } from "express";
 
 import { User } from "../models/user.model";
 import { IUser } from "../interfaces/user.interface";
 import { UserValidation, UserIdValidation } from "../validation/user.validation";
+import * as bcrypt from "bcrypt";
 
 /**
  * Create new user
@@ -33,7 +34,8 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
         const user = new User({
             username: validateUserModel.username,
             name: validateUserModel.name,
-            email: validateUserModel.email
+            email: validateUserModel.email,
+            password: await bcrypt.hash(validateUserModel.password, 10)
         });
 
         const savedUser = await user.save();
@@ -134,3 +136,8 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
         next(error);
     }
 };
+
+export const getMe: RequestHandler = async (req: Request, res) => {
+    const user = await User.findById(req.user?.sub)
+    res.json(user)
+}
