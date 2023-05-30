@@ -84,18 +84,21 @@ describe("Integration: User /DELETE Testing", () => {
 describe("Integration: /user/me", () => {
     let token: string | undefined;
     beforeAll(async () => {
-        await request(app).post('/user').send({
+        await request(app).post("/user").send({
             name: "Jane Doe",
             username: "jane234",
             email: "jane@gmail.com",
             password: "jane1234"
-        })
-        token = await authService.login("jane@gmail.com", "jane1234")
-        
-    })
+        });
+        token = await authService.login("jane@gmail.com", "jane1234");
+    });
 
-    it("gets user information if toke is provided", async () => {
-        request(app).get('/user/me').set('Authorization', `Bearer ${token}`)
-        .expect(/200/).expect('Content-Type', /json/).expect(/Jane Doe/)
-    })
-})
+    it("gets user information if token is provided", async () => {
+        request(app)
+            .get("/user/me")
+            .set("Authorization", `Bearer ${token}`)
+            .expect(/200/)
+            .expect("Content-Type", /json/)
+            .expect(/Jane Doe/);
+    });
+});
