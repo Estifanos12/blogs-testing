@@ -3,10 +3,10 @@ import { Response, NextFunction } from "express";
 
 import postRoute from "./routes/post.route";
 import userRoute from "./routes/user.route";
+import authRouter from "./routes/auth.route";
 import { connectDB } from "./utils/connection.util";
 import * as dotenv from "dotenv";
 import { MONGO_URL } from "./config";
-import authRouter from "./routes/auth.route";
 dotenv.config();
 
 const app = express();
