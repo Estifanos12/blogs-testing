@@ -2,8 +2,6 @@ import request from "supertest";
 
 import app from "../../src/app";
 import mongoose from "mongoose";
-import { User } from "../../src/models/user.model";
-import { Post } from "../../src/models/post.model";
 import { MONGO_URL } from "../../src/config";
 import authService from "../../src/services/auth.services";
 let server: any;
@@ -11,8 +9,6 @@ let server: any;
 beforeAll(async () => {
     await mongoose.connect(MONGO_URL);
     server = app.listen(8080);
-    // await User.collection.drop();
-    // await Post.collection.drop();
 });
 
 afterAll(async () => {
